@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple random number guessing game">
+    <title>Guess the Number</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f8ff;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            input, button {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <center>
+            <h1>Guess the number from 1 to 10</h1>
+            <input id="guessnumber">
+            <button onclick="check()">Check</button>
+            <p id="Result">You are right!</p>
+            <p id="Score">Score:10</p>
+        </center>
+    </div>
+
+    <script>
+        var guessnumber = document.getElementById("guessnumber");
+        var result = document.getElementById("Result");
+        var score = document.getElementById("Score");
+        var randomnumber = Math.floor(Math.random() * 10) + 1;
+        var totalscore = 10;
+
+        function check() {
+            var num = guessnumber.value;
+            if (randomnumber == num) {
+                result.textContent = "You are Right!!";
+                alert("You Won!!");
+            } else {
+                if(totalscore==0)
+                {
+                   alert("You Lose!!")
+                }
+                totalscore--;
+                result.textContent = "You are Wrong!";
+                score.textContent = "Score: " + totalscore;
+                
+            }
+        }
+
+        console.log(randomnumber);
+    </script>
+</body>
+</html>
